@@ -29,3 +29,9 @@ input {
 a {
   font-weight: 600;
 }
+
+.card.is-danger {
+    background-color: #f14668;
+    border-color: transparent;
+    color: #fff;
+}

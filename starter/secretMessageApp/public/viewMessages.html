@@ -14,7 +14,7 @@
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <script src="js/viewMessages.js"></script>
+    <script defer src="js/viewMessages.js"></script>
   </head>
 
   <body>
@@ -22,25 +22,23 @@
         <div class="content">
             <h2 class="has-text-centered mt-6">View Your Messages!</h2>
         </div>
+        Try passwords: 1234, 35372
         <div id="passcodeInput" class="hero-body has-text-centered">
             <div class="login">
-            <form action="javascript:void(0);">
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-medium is-rounded" type="text" placeholder="What's the passcode?" id="passcode" required />
+                <form action="javascript:void(0);">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium is-rounded" type="text" placeholder="What's the passcode?" id="passcode" required />
+                        </div>
                     </div>
-                </div>
-                <button class="button is-block is-fullwidth is-primary is-medium is-rounded" onclick="getMessages()">
-                    Click Here
-                </button>
-            </form>
-            <br>
+                    <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit" id="viewMsg">
+                        View Messages
+                    </button>
+                </form>
             </div>
         </div>
-        <section class="container">
-            <h2 id="message" class="subtitle is-4"></h2>
+        <section id="messages" class="container">
         </section>
-
     </section>
   </body>
 
