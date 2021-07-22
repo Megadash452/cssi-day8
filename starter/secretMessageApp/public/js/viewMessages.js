@@ -74,7 +74,7 @@ document.getElementById("viewMsg").addEventListener('click', e => {
         alert("timeout!!!");
         timeout = true
         renderTimeout();
-        doTimeout();
+        doTimeout(); // dont work
         alert("you are no longer on timeout");
         msgSection.innerHTML = "";
         attempts = 0;
@@ -82,7 +82,6 @@ document.getElementById("viewMsg").addEventListener('click', e => {
     if (!timeout)
         findMsg(document.getElementById("passcode").value);
 });
-findMsg(document.getElementById("passcode").value);
 
 async function doTimeout() {
     await setTimeout(() => { }, timeoutLength);
