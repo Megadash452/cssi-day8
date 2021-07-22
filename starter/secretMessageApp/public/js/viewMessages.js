@@ -13,9 +13,7 @@ const getMsgs = () => {
 };
 
 function findMsg(myPass) {
-    const msgsRef = firebase.database().ref();
-
-    msgsRef.on('value', (snapshot) => {
+    firebase.database().ref().on('value', (snapshot) => {
         const data = snapshot.val();
         msgSection.innerHTML = "";
         passMatch = false;
@@ -69,14 +67,14 @@ function renderTimeout() {
 }
 
 
-document.getElementById("viewMsg").addEventListener('click', async e => {
+document.getElementById("viewMsg").addEventListener('click', e => {
     attempts++;
 
     if (attempts >= 3) {
         alert("timeout!!!");
         timeout = true
         renderTimeout();
-        await setTimeout(() => { }, timeoutLength);
+        doTimeout();
         alert("you are no longer on timeout");
         msgSection.innerHTML = "";
         attempts = 0;
@@ -85,3 +83,7 @@ document.getElementById("viewMsg").addEventListener('click', async e => {
         findMsg(document.getElementById("passcode").value);
 });
 findMsg(document.getElementById("passcode").value);
+
+async function doTimeout() {
+    await setTimeout(() => { }, timeoutLength);
+}
