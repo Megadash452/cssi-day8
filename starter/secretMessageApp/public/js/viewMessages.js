@@ -35,7 +35,10 @@ function findMsg(myPass) {
     });
 }
 
-msgSection = document.querySelector("#messages");
+let msgSection = document.querySelector("#messages");
+let attempts = 0;
+let timeout = false;
+const timeoutLength = 180000;
 
 function renderMsg(msg) {
     msgSection.innerHTML = msgSection.innerHTML +
@@ -54,9 +57,31 @@ function renderError(passcode) {
         </div>
     </div>`
 }
+function renderTimeout() {
+    msgSection.innerHTML = 
+    `<div class="card is-warning">
+        <div class="card-content">
+            <h2 class="msg subtitle is-4">
+                You are on timeout for trying a wrong password 3 times. Your timeout lasts ${timeoutLength/60000} minutes
+            </h2>
+        </div>
+    </div>`
+}
 
 
-document.getElementById("viewMsg").addEventListener('click', e => {
-    findMsg(document.getElementById("passcode").value);
+document.getElementById("viewMsg").addEventListener('click', async e => {
+    attempts++;
+
+    if (attempts >= 3) {
+        alert("timeout!!!");
+        timeout = true
+        renderTimeout();
+        await setTimeout(() => { }, timeoutLength);
+        alert("you are no longer on timeout");
+        msgSection.innerHTML = "";
+        attempts = 0;
+    }
+    if (!timeout)
+        findMsg(document.getElementById("passcode").value);
 });
 findMsg(document.getElementById("passcode").value);

@@ -35,3 +35,8 @@ a {
     border-color: transparent;
     color: #fff;
 }
+.card.is-warning {
+    background-color: #ffe08a;
+    border-color: transparent;
+    color: rgba(0,0,0,.7);
+}
