@@ -22,7 +22,7 @@ function findMsg(myPass) {
         for (let key in data) {
             const msg = data[key];
             console.log(msg);
-            if (parseInt(myPass) == msg.passcode) {
+            if (hash(myPass) == msg.passcode) {
                 passMatch = true;
                 renderMsg(msg.message);
                 // TODO: fix msg and message mistake in database
@@ -88,4 +88,8 @@ document.getElementById("viewMsg").addEventListener('click', e => {
 
 async function doTimeout() {
     await setTimeout(() => { }, timeoutLength);
+}
+
+function hash(pass) {
+    return new Hashes.SHA1.hex(pass);
 }

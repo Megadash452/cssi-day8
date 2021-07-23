@@ -3,7 +3,7 @@ function sendMsg(msg, pass) {
         let ref = firebase.database().ref()
         ref.push({
             message: msg,
-            passcode: pass
+            passcode: hash(pass)
         });
     }
 }
@@ -84,3 +84,7 @@ passElement.addEventListener('change', e => {
     else
         symbolElement.innerText = '1 symbol ❌';
 });
+
+function hash(pass) {
+    return new Hashes.SHA1.hex(pass);
+}
