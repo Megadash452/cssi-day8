@@ -8,10 +8,25 @@ function sendMsg(msg, pass) {
     }
 }
 
-document.getElementById('submit').addEventListener('click', e => {
+let textarea = document.getElementById('message');
+let submitBtn = document.getElementById('submit');
+let textCount = document.getElementById('text-count');
+
+submitBtn.addEventListener('click', e => {
     sendMsg(
-        document.getElementById('message').value,
+        textarea.value,
         document.getElementById('passcode').value
     );
-    document.getElementById('message').value = "";
+    textarea.value = "";
+});
+
+textarea.addEventListener('input', e => {
+    let count = textarea.value.length;
+    textCount.innerText = `${count}/${textarea.maxLength}`;
+    if (count >= 90) {
+        textCount.style.color = "red";
+    }
+    else {
+        textCount.style.color = "#4a4a4a";
+    }
 });

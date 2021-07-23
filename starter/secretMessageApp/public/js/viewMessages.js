@@ -24,7 +24,8 @@ function findMsg(myPass) {
             console.log(msg);
             if (parseInt(myPass) == msg.passcode) {
                 passMatch = true;
-                renderMsg(msg.msg);
+                renderMsg(msg.message);
+                // TODO: fix msg and message mistake in database
             }  
         }
         if (!passMatch && myPass != "") {
@@ -39,6 +40,8 @@ let timeout = false;
 const timeoutLength = 180000;
 
 function renderMsg(msg) {
+    if (!msg)
+        return;
     msgSection.innerHTML = msgSection.innerHTML +
     `<div class="card">
         <div class="card-content">
