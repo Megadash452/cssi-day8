@@ -1,3 +1,5 @@
+// TODO: ELEMTNS  ARE EMPTY
+
 function sendMsg(msg, pass) {
     if (msg && pass) {
         let ref = firebase.database().ref()
