@@ -40,3 +40,7 @@ a {
     border-color: transparent;
     color: rgba(0,0,0,.7);
 }
+
+div.control strong::after {
+    content: ''
+}
